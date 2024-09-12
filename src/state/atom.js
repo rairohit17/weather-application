@@ -10,7 +10,7 @@ export const valuesState= atom({
 })
 export const placeState= atom({
     key:"place",
-    default:"pune"
+    default:"jaipur"
 })
 export const locationState= atom({
     key : "location",

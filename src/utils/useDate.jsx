@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect ,useState} from "react"
 
 export const useDate=()=>{
     const [date, setDate] = useState(new Date())

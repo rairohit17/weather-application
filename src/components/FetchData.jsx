@@ -29,7 +29,7 @@ const FetchData = () => {
         }
         try {
             const response= await axios.request(options)
-            console.log(response.data)
+           
             const thisData= Object.values(response.data.locations)[0]
             setLocation(thisData.address);
             setValues(thisData.values)
@@ -49,7 +49,7 @@ const FetchData = () => {
         fetchWeather()
     },[place])
     useEffect(()=>{
-        console.log(values)
+        
     },[values])
     
   return (

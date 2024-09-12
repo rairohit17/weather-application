@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { weatherState } from '../state/atom'
+import { placeState, weatherState } from '../state/atom'
  import Clear from "../assets/images/Clear.jpg"
  import Cloudy from "../assets/images/Cloudy.jpg"
  import Fog from "../assets/images/fog.png"
@@ -7,19 +7,21 @@ import { weatherState } from '../state/atom'
  import Snow from "../assets/images/snow.jpg"
  import Stormy from "../assets/images/Stormy.jpg"
  import Sunny from "../assets/images/Sunny.jpg"
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
+// import { placeState } from '../state/atom'
 
 
 
 const BackgroundLayout = () => {
   const [image,setImage]= useState(Clear)
-  const weather= useRecoilValue(weatherState)
+  const [place,setPlace]= useRecoilState(placeState)
+  const [weather,setWeather]= useRecoilState(weatherState)
   useEffect(()=>{
     if(weather.conditions){
       let imageString= weather.conditions
       if ( imageString.toLowerCase().includes('clear')){
         setImage(Clear)
-      }if ( imageString.toLowerCase().includes('cloud')){
+      }if ( imageString.toLowerCase().includes('cloud') || imageString.toLowerCase().includes("overcast")){
         setImage(Cloudy)
       }if ( imageString.toLowerCase().includes('fog')){
         setImage(Fog)
@@ -38,6 +40,7 @@ const BackgroundLayout = () => {
   },[weather])
 
   return (
+    
     <img src={image} alt=" weather-image" className='h-screen w-full fixed  left-0 top-0 -z-10 '  />
   )
 }
