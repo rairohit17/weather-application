@@ -1,3 +1,3 @@
 
 
-![Alt text](src/assets/snow.jpg)
+![Alt text](src/assets/images/snow.jpg)
